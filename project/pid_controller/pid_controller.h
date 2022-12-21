@@ -20,7 +20,7 @@ public:
     double _pError = 0.0;
     double _iError = 0.0;
     double _dError = 0.0;
-    double _previousCTE - 0.0;
+    double _previousCTE = 0.0;
 
     /*
     * Coefficients
