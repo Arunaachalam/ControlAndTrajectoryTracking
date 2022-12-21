@@ -226,9 +226,10 @@ int main ()
   **/
 
   PID pid_steer = PID();
-  pid_steer.Init(0.3, 0.001, 0.1, 1.2, -1.2);
+  pid_steer.Init(0.3, 1e-3, 0.03, 1.2, -1.2);
   PID pid_throttle = PID();
-  pid_throttle.Init(0.08, 0.01, 0.03, 1.0, -1.0);
+  pid_throttle.Init(0.2, 1e-3, 0.02, 1.0, -1.0);
+
 
   h.onMessage([&pid_steer, &pid_throttle, &new_delta_time, &timer, &prev_timer, &i, &prev_timer](uWS::WebSocket<uWS::SERVER> ws, char *data, size_t length, uWS::OpCode opCode)
   {
@@ -306,7 +307,7 @@ int main ()
           // Caluclate steer based on the yaw angles
           double anglePoint = angle_between_points(
               x_position, y_position, x_points.begin()[0], y_points.begin()[0]);
-          double correctedSteer = anglePoint - yaw; 
+          double correctedSteer = yaw - anglePoint; 
           
           error_steer = correctedSteer;
 
@@ -345,7 +346,7 @@ int main ()
 
           // Calculate throttle based on velocity differnce
 
-          error_throttle = *min_element(v_points.begin(),v_points.end()) - velocity;
+          error_throttle = velocity - *min_element(v_points.begin(),v_points.end());
 
 
 
