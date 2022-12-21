@@ -53,7 +53,7 @@ The third iteration results are better with good steering capability, but the sp
 
 The fourth iteration I tried to increase the speed of the car by playing with the co-efficients and obtained a better speed.
 
-[![watch the video](https://img.youtube.com/vi//hqdefault.jpg)]()
+[![watch the video](https://img.youtube.com/vi/yndMzAnsWOs/hqdefault.jpg)](https://youtu.be/yndMzAnsWOs)
 
 ![alt text](./img/FourthSteerError.png)
 ![alt text](./img/FourthThrottleError.png)
@@ -67,17 +67,9 @@ The co-efficients are used for fine tuning each iterations
 | Fourth    | 0.3, 1e-3, 0.03 | 0.2, 1e-3, 0.02  |
 
 
-Answer the following questions:
-- Add the plots to your report and explain them (describe what you see)
-- What is the effect of the PID according to the plots, how each part of the PID affects the control command?
-- How would you design a way to automatically tune the PID parameters?
-- PID controller is a model free controller, i.e. it does not use a model of the car. Could you explain the pros and cons of this type of controller?
-- (Optional) What would you do to improve the PID controller?
+### Step 5: Further comments
+The PID controller is independent of the car model, for example the speed-torque characteristics of the car is not defined anywhere, only by applying a throttle, it is difficult to define the actual acceleration outcome of the car. It has to be included to make the car throttle smoothly.
 
+A better way to control is to design an automated PID parameter control. This can be done by, for example Twiddle, by tweaking the steer and throttle parameters.
 
-### Tips:
-
-- When you wil be testing your c++ code, restart the Carla simulator to remove the former car from the simulation.
-- If the simulation freezes on the desktop mode but is still running on the terminal, close the desktop and restart it.
-- When you will be tuning the PID parameters, try between those values:
-
+Though this is an implementation, it has to be improved to have better throttle characteristics. This can be improved by adding a car model to the throttle and adjust the parameters with a Twiddle algorithm.
