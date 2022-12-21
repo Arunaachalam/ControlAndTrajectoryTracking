@@ -27,7 +27,7 @@ In main.cpp, the steer was calculated based on the yaw angle. The in-built angle
 ### Step 4: Evaluate the PID efficiency
 Initially, the Car didn't follow the path as predicted. It got hit at the wall. The steer error was especially too high and this happened. 
 
-![alt text](https://github.com/Arunaachalam/ControlAndTrajectoryTracking/blob/main/img/Firstrun.MP4)
+https://github.com/Arunaachalam/ControlAndTrajectoryTracking/blob/main/img/Firstrun.MP4
 
 It can be seen that the steer error was ranging between -2 to 3 and Throttle error was ranging between -2 and 4.
 
