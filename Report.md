@@ -12,48 +12,29 @@ Initially test compile was made for the empty PID controller to check if the env
 
 
 ### Step 1: Build the PID controller object
-Complete the TODO in the [pid_controller.h](https://github.com/udacity/nd013-c6-control-starter/blob/master/project/pid_controller/pid_controller.h) and [pid_controller.cpp](https://github.com/udacity/nd013-c6-control-starter/blob/master/project/pid_controller/pid_controller.cpp).
+- The pid_controller.h was initiated with public variables to hold errors, co-efficients and time.
+- The pid_controller.cpp was populated with the relevant codes on the defined functions of Init, UpdateError, TotalError, and UpdateDeltaTime.
+- The PID controller object was built without any errors
 
 Run the simulator and see in the desktop mode the car in the CARLA simulator. Take a screenshot and add it to your report. The car should not move in the simulation.
+
 ### Step 2: PID controller for throttle:
-1) In [main.cpp](https://github.com/udacity/nd013-c6-control-starter/blob/master/project/pid_controller/main.cpp), complete the TODO (step 2) to compute the error for the throttle pid. The error is the speed difference between the actual speed and the desired speed.
-
-Useful variables:
-- The last point of **v_points** vector contains the velocity computed by the path planner.
-- **velocity** contains the actual velocity.
-- The output of the controller should be inside [-1, 1].
-
-2) Comment your code to explain why did you computed the error this way.
-
-3) Tune the parameters of the pid until you get satisfying results (a perfect trajectory is not expected).
+In main.cpp, the throttle was calculated from the available velocity of the car and the minimum of the desired velocity. This way the throttle error can be sent to calculate the total error. An check is made if the value is with in the min-max range and the throttle is set to the car.
 
 ### Step 3: PID controller for steer:
-1) In [main.cpp](https://github.com/udacity/nd013-c6-control-starter/blob/master/project/pid_controller/main.cpp), complete the TODO (step 3) to compute the error for the steer pid. The error is the angle difference between the actual steer and the desired steer to reach the planned position.
-
-Useful variables:
-- The variable **y_points** and **x_point** gives the desired trajectory planned by the path_planner.
-- **yaw** gives the actual rotational angle of the car.
-- The output of the controller should be inside [-1.2, 1.2].
-- If needed, the position of the car is stored in the variables **x_position**, **y_position** and **z_position**
-
-2) Comment your code to explain why did you computed the error this way.
-
-3) Tune the parameters of the pid until you get satisfying results (a perfect trajectory is not expected).
+In main.cpp, the steer was calculated based on the yaw angle. The in-built angle_between_points is used to calculate the required angle. It is then corrected with the actual yaw of the vehicle and steer error is calculated. Similar to the throttle control, the total error is calculated and made sure that it is within the min-max range.
 
 ### Step 4: Evaluate the PID efficiency
-The values of the error and the pid command are saved in thottle_data.txt and steer_data.txt.
-Plot the saved values using the command (in nd013-c6-control-refresh/project):
+Initially, the Car didn't follow the path as predicted. It got hit at the wall. The steer error was especially too high and this happened. 
 
-```
-python3 plot_pid.py
-```
+![alt text](./img/Firstrun.MP4)
 
-You might need to install a few additional python modules: 
+It can be seen that the steer error was ranging between -2 to 3 and Throttle error was ranging between -2 and 4.
 
-```
-pip3 install pandas
-pip3 install matplotlib
-```
+![alt text](./img/FirstSteerError.png)
+![alt text](./img/FirstThrottleError.png)
+
+To reduce the errors an iteration of changing the Kp,Ki,Kd values are made to identify a better solution.
 
 Answer the following questions:
 - Add the plots to your report and explain them (describe what you see)
