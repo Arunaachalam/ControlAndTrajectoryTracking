@@ -60,11 +60,11 @@ The fourth iteration I tried to increase the speed of the car by playing with th
 
 The co-efficients are used for fine tuning each iterations
 
-| Iteration | Steer | Throttle|
-| First     |
-| Second    |
-| Third     |
-| Fourth    |
+| Iteration | Steer           | Throttle         |
+| First     | 0.3, 1e-3, 0.3  | 0.2, 1e-3, 2     |
+| Second    | 0.3, 1e-3, 0.3  | 0.2, 1e-3, 0.2   |
+| Third     | 0.3, 1e-3, 0.3  | 0.2, 1e-3, 0.02  |
+| Fourth    | 0.3, 1e-3, 0.03 | 0.2, 1e-3, 0.02  |
 
 
 Answer the following questions:
