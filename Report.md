@@ -36,6 +36,38 @@ It can be seen that the steer error was ranging between -2 to 3 and Throttle err
 
 To reduce the errors an iteration of changing the Kp,Ki,Kd values are made to identify a better solution.
 
+The second iteration resulted in an oscillating car, but this is still an better improvement. A better improvementon steer error now between -1.5 to 1.5 and throttle error is still peaky.
+
+[![watch the video](https://img.youtube.com/vi/XECklG2G26M/hqdefault.jpg)](https://youtu.be/XECklG2G26M)
+
+![alt text](./img/SecondSteerError.png)
+![alt text](./img/SecondThrottleError.png)
+
+The third iteration results are better with good steering capability, but the speed of the car was very low.
+
+[![watch the video](https://img.youtube.com/vi/_ZiO3WRZ2cc/hqdefault.jpg)](https://youtu.be/_ZiO3WRZ2cc)
+
+
+![alt text](./img/ThirdSteerError.png)
+![alt text](./img/ThirdThrottleError.png)
+
+The fourth iteration I tried to increase the speed of the car by playing with the co-efficients and obtained a better speed.
+
+[![watch the video](https://img.youtube.com/vi//hqdefault.jpg)]()
+
+![alt text](./img/FourthSteerError.png)
+![alt text](./img/FourthThrottleError.png)
+
+The co-efficients are used for fine tuning each iterations
+
+------------------------------------------------------
+| Iteration | Steer | Throttle|
+| First     |
+| Second    |
+| Third     |
+| Fourth    |
+-------------------------------------------------------
+
 Answer the following questions:
 - Add the plots to your report and explain them (describe what you see)
 - What is the effect of the PID according to the plots, how each part of the PID affects the control command?
