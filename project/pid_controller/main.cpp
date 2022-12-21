@@ -219,7 +219,6 @@ int main ()
   * TODO (Step 1): create pid (pid_steer) for steer command and initialize values
   **/
 
-
   // initialize pid throttle
   /**
   * TODO (Step 1): create pid (pid_throttle) for throttle command and initialize values
@@ -229,7 +228,6 @@ int main ()
   pid_steer.Init(0.3, 1e-3, 0.03, 1.2, -1.2);
   PID pid_throttle = PID();
   pid_throttle.Init(0.2, 1e-3, 0.02, 1.0, -1.0);
-
 
   h.onMessage([&pid_steer, &pid_throttle, &new_delta_time, &timer, &prev_timer, &i, &prev_timer](uWS::WebSocket<uWS::SERVER> ws, char *data, size_t length, uWS::OpCode opCode)
   {
@@ -292,7 +290,7 @@ int main ()
           * TODO (step 3): uncomment these lines
           **/
 //           // Update the delta time with the previous command
-//           pid_steer.UpdateDeltaTime(new_delta_time);
+           pid_steer.UpdateDeltaTime(new_delta_time);
 
           // Compute steer error
           double error_steer;
@@ -303,18 +301,16 @@ int main ()
           /**
           * TODO (step 3): compute the steer error (error_steer) from the position and the desired trajectory
           **/
+          // *********** I changed here error_steer = 0
 
-          // Caluclate steer based on the yaw angles
-          double anglePoint = angle_between_points(
-              x_position, y_position, x_points.begin()[0], y_points.begin()[0]);
-          double correctedSteer = yaw - anglePoint; 
-          
-          error_steer = correctedSteer;
+           double angle_point = angle_between_points(x_position, y_position, x_points.begin()[0], y_points.begin()[0]);
+           double corrected_steer = yaw - angle_point;
+           error_steer = corrected_steer;
 
           /**
           * TODO (step 3): uncomment these lines
           **/
-//           // Compute control to apply
+//           // Compute control to apply ************* I uncommented lines from 309 to 319
            pid_steer.UpdateError(error_steer);
            steer_output = pid_steer.TotalError();
 
@@ -342,11 +338,8 @@ int main ()
           /**
           * TODO (step 2): compute the throttle error (error_throttle) from the position and the desired speed
           **/
-          // modify the following line for step 2
-
-          // Calculate throttle based on velocity differnce
-
-          error_throttle = velocity - *min_element(v_points.begin(),v_points.end());
+          // modify the following line for step 2  *************** I changed here error_throttle = 0
+          error_throttle = velocity - *min_element(v_points.begin(), v_points.end());
 
 
 
@@ -356,7 +349,7 @@ int main ()
           /**
           * TODO (step 2): uncomment these lines
           **/
-//           // Compute control to apply
+//           // Compute control to apply  *********** I removed comments here from line 348  to 368
            pid_throttle.UpdateError(error_throttle);
            double throttle = pid_throttle.TotalError();
 

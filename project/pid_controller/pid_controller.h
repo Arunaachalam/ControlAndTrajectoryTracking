@@ -18,29 +18,27 @@ public:
     * Errors
     */
     double _pError = 0.0;
-    double _iError = 0.0;
-    double _dError = 0.0;
-    double _previousCTE = 0.0;
+  	double _iError = 0.0;
+  	double _dError = 0.0;
+  	double _previousCTE = 0.0;
 
     /*
     * Coefficients
     */
-    double _Kp = 0.0;
-    double _Ki = 0.0;
-    double _Kd = 0.0;
-
+  	double _Kp = 0.0;
+  	double _Ki = 0.0;
+  	double _Kd = 0.0;
 
     /*
     * Output limits
     */
-    double _outputLimMax = 0.0;
-    double _outputLimMin = 0.0;
-
+  	double _outputLimMax = 0.0;
+   	double _outputLimMin = 0.0;
   
     /*
     * Delta time
     */
-    double _deltaTime = 0;
+  	double _deltaTime = 1;
 
     /*
     * Constructor
