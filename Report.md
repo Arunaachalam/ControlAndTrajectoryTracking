@@ -60,13 +60,12 @@ The fourth iteration I tried to increase the speed of the car by playing with th
 
 The co-efficients are used for fine tuning each iterations
 
-------------------------------------------------------
 | Iteration | Steer | Throttle|
 | First     |
 | Second    |
 | Third     |
 | Fourth    |
--------------------------------------------------------
+
 
 Answer the following questions:
 - Add the plots to your report and explain them (describe what you see)
